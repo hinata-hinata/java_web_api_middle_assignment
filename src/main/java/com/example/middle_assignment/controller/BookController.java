@@ -53,8 +53,17 @@ public class BookController {
 
   @PostMapping("/{id}")
   public ResponseEntity<Book> update(@PathVariable long id,
-                                     @RequestBody Book book){
+                                     @RequestBody Book book) {
     bookService.update(book, id);
     return ResponseEntity.ok(book);
+  }
+
+  @GetMapping("/search")
+  public ResponseEntity<List<Book>> searchBooks(
+          @RequestParam("title") String title) {
+
+    List<Book> books = bookService.searchByTitle(title);
+
+    return ResponseEntity.ok(books);
   }
   }
