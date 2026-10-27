@@ -81,4 +81,14 @@ public class BookService {
     book.setCreatedAt(targetBook.getCreatedAt());
     return bookRepository.update(book);
   }
+
+  public List<Book> searchByTitle(String title) {
+    if (title == null || title.isBlank()) {
+      throw new BookArgumentNotValidException(
+              "Search title is required"
+      );
+    }
+
+    return bookRepository.searchByTitle(title.trim());
+  }
 }

@@ -39,4 +39,8 @@ public class BookRepository {
 
     return book;
   }
+
+  public List<Book> searchByTitle(String title) {
+    return bookMapper.searchByTitle(title);
+  }
 }

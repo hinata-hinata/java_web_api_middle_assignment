@@ -23,4 +23,12 @@ public interface BookMapper {
 
   @Update("update books set title = #{title}, author = #{author}, price = #{price} where id = #{id}")
   int update(Book book);
+
+  @Select("""
+    SELECT id, title, author, price, created_at, updated_at
+    FROM books
+    WHERE title LIKE '%' || #{title} || '%'
+    ORDER BY created_at DESC
+    """)
+  List<Book> searchByTitle(@Param("title") String title);
 }
