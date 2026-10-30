@@ -43,4 +43,8 @@ public class BookRepository {
   public List<Book> searchByTitle(String title) {
     return bookMapper.searchByTitle(title);
   }
+
+  public List<Book> searchByPrice(int minPrice, int maxPrice) {
+    return bookMapper.searchByPrice(minPrice, maxPrice);
+  }
 }

@@ -66,4 +66,14 @@ public class BookController {
 
     return ResponseEntity.ok(books);
   }
+
+  @GetMapping("/search/price")
+  public ResponseEntity<List<Book>> searchByPrice(
+          @RequestParam("minPrice") int minPrice,
+          @RequestParam("maxPrice") int maxPrice) {
+
+    List<Book> books = bookService.searchByPrice(minPrice, maxPrice);
+
+    return ResponseEntity.ok(books);
+  }
   }
