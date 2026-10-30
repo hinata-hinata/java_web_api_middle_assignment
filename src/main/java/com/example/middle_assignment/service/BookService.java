@@ -91,4 +91,22 @@ public class BookService {
 
     return bookRepository.searchByTitle(title.trim());
   }
+
+  public List<Book> searchByPrice(int minPrice, int maxPrice) {
+    if (minPrice < 0 || maxPrice < 0) {
+      throw new org.springframework.web.server.ResponseStatusException(
+              org.springframework.http.HttpStatus.BAD_REQUEST,
+              "価格は0以上で指定してください"
+      );
+    }
+
+    if (minPrice > maxPrice) {
+      throw new org.springframework.web.server.ResponseStatusException(
+              org.springframework.http.HttpStatus.BAD_REQUEST,
+              "最低価格は最高価格以下にしてください"
+      );
+    }
+
+    return bookRepository.searchByPrice(minPrice, maxPrice);
+  }
 }

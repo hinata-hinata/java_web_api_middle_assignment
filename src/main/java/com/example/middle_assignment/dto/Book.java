@@ -11,7 +11,7 @@ public class Book {
     private String author;
     private Integer price;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private String review;
   }
 
 
